@@ -701,6 +701,7 @@ export default function App() {
                     <th>Tổng tiền</th>
                     <th>Trạng thái</th>
                     <th>Ngày mua</th>
+                    <th style={{ textAlign: 'center' }}>Thao tác</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -717,11 +718,28 @@ export default function App() {
                       <td style={{ color: 'var(--text-secondary)' }}>
                         {new Date(order.created_at).toLocaleString('vi-VN')}
                       </td>
+                      <td style={{ textAlign: 'center' }}>
+                        {(order.status === 'pending' || order.status === 'processing') ? (
+                          <button 
+                            className="btn btn-sm" 
+                            style={{ background: 'var(--accent-green)', color: 'white', padding: '0.35rem 0.75rem', fontSize: '0.8rem', border: 'none', borderRadius: '6px', cursor: 'pointer', fontWeight: 'bold' }}
+                            onClick={() => handleOrderStatusUpdate(order.id, 'completed')}
+                          >
+                            ✓ Hoàn thành
+                          </button>
+                        ) : order.status === 'completed' ? (
+                          <span style={{ color: 'var(--accent-green)', fontSize: '0.85rem', fontWeight: 'bold' }}>
+                            🟢 Đã xong
+                          </span>
+                        ) : (
+                          <span style={{ color: 'var(--accent-rose)', fontSize: '0.85rem' }}>Đã hủy</span>
+                        )}
+                      </td>
                     </tr>
                   ))}
                   {orders.length === 0 && (
                     <tr>
-                      <td colSpan="5" style={{ textAlign: 'center', padding: '3rem', color: 'var(--text-muted)' }}>
+                      <td colSpan="6" style={{ textAlign: 'center', padding: '3rem', color: 'var(--text-muted)' }}>
                         Chưa có đơn hàng nào được ghi nhận.
                       </td>
                     </tr>

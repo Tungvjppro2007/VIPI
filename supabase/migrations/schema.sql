@@ -142,4 +142,4 @@ BEGIN
 
     RETURN v_order_id;
 END;
-$$ LANGUAGE plpgsql;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
