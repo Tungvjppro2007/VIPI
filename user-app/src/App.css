@@ -496,14 +496,14 @@
 }
 
 .modal-content {
-  background: #090e0a;
-  border: 1px solid var(--border-color);
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
   border-radius: var(--radius-lg);
   width: 100%;
   max-width: 540px;
   max-height: 90vh;
   overflow-y: auto;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
   transform: scale(0.95);
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
@@ -516,15 +516,17 @@
 
 .modal-header {
   padding: 1.5rem 2rem;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid #e5e7eb;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: #111827;
 }
 
 .modal-title {
   font-size: 1.5rem;
   font-weight: 700;
+  color: #111827;
 }
 
 .modal-body {
@@ -540,14 +542,14 @@
   font-size: 0.9rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
-  color: var(--text-secondary);
+  color: #374151;
 }
 
 .form-input {
   width: 100%;
-  background: #0d1410;
-  border: 1px solid var(--border-color);
-  color: white;
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  color: #111827;
   padding: 0.85rem 1rem;
   border-radius: var(--radius-md);
   font-family: var(--font-sans);
@@ -555,11 +557,15 @@
   transition: var(--transition-smooth);
 }
 
+.form-input::placeholder {
+  color: #9ca3af;
+}
+
 .form-input:focus {
   outline: none;
-  border-color: var(--accent-blue);
-  box-shadow: 0 0 8px rgba(73, 193, 33, 0.25);
-  background: #14221a;
+  border-color: var(--accent-emerald);
+  box-shadow: 0 0 8px rgba(73, 193, 33, 0.2);
+  background: #ffffff;
 }
 
 .form-submit-btn {
@@ -592,11 +598,11 @@
 .success-title {
   font-size: 1.75rem;
   margin-bottom: 1rem;
-  color: var(--text-primary);
+  color: #111827;
 }
 
 .success-text {
-  color: var(--text-secondary);
+  color: #374151;
   line-height: 1.6;
   margin-bottom: 2rem;
 }
