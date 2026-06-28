@@ -94,19 +94,19 @@
 }
 
 .hero h1 {
-  font-size: 3.5rem;
+  font-size: clamp(2rem, 8vw, 3.5rem);
   line-height: 1.1;
   margin-bottom: 1.25rem;
   font-weight: 800;
-  color: #FF7A00;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  color: #81E277;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7), 0 0 1px rgba(0, 0, 0, 0.8);
 }
 
 .hero h1 .gradient-text {
   background: none !important;
   -webkit-background-clip: unset !important;
-  -webkit-text-fill-color: #FF7A00 !important;
-  color: #FF7A00 !important;
+  -webkit-text-fill-color: #81E277 !important;
+  color: #81E277 !important;
 }
 
 .hero p {
@@ -618,9 +618,19 @@
 }
 
 /* Responsive */
+@media (max-width: 768px) {
+  body {
+    background-attachment: scroll;
+  }
+}
+
 @media (max-width: 640px) {
-  .hero h1 {
-    font-size: 2.5rem;
+  .logo {
+    font-size: 1.15rem;
+  }
+  .cart-toggle {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
   }
   .header {
     padding: 1rem;
@@ -630,6 +640,38 @@
   }
   .modal-body {
     padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-image-container {
+    height: 180px;
+  }
+  .modal-content {
+    max-height: 95vh;
+  }
+  .modal-header {
+    padding: 1rem 1.25rem;
+  }
+  .modal-body {
+    padding: 1.25rem 1.25rem;
+  }
+  .form-input {
+    padding: 0.75rem 0.85rem;
+    font-size: 0.9rem;
+  }
+  .cart-header {
+    padding: 1rem 1.25rem;
+  }
+  .cart-items {
+    padding: 1rem 1.25rem;
+    gap: 1rem;
+  }
+  .cart-item {
+    padding-bottom: 1rem;
+  }
+  .cart-footer {
+    padding: 1.25rem;
   }
 }
 
