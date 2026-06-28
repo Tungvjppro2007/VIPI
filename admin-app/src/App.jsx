@@ -219,20 +219,21 @@ export default function App() {
     }
 
     try {
-      // Fetch Products
-      const { data: prodData } = await supabase.from('products').select('*').order('created_at', { ascending: false });
-      setProducts(prodData || []);
+      // Fetch all data in parallel to reduce loading latency (concurrency)
+      const [prodRes, ordRes, itemsRes] = await Promise.all([
+        supabase.from('products').select('*').order('created_at', { ascending: false }),
+        supabase.from('orders').select('*').order('created_at', { ascending: false }),
+        supabase.from('order_items').select('*, products(name)')
+      ]);
 
-      // Fetch Orders
-      const { data: ordData } = await supabase.from('orders').select('*').order('created_at', { ascending: false });
-      setOrders(ordData || []);
+      if (prodRes.error) throw prodRes.error;
+      if (ordRes.error) throw ordRes.error;
+      if (itemsRes.error) throw itemsRes.error;
 
-      // Fetch Order Items joined with product names
-      const { data: itemsData } = await supabase
-        .from('order_items')
-        .select('*, products(name)');
-      
-      const mappedItems = (itemsData || []).map(item => ({
+      setProducts(prodRes.data || []);
+      setOrders(ordRes.data || []);
+
+      const mappedItems = (itemsRes.data || []).map(item => ({
         ...item,
         product_name: item.products ? item.products.name : 'Sản phẩm đã bị xóa'
       }));

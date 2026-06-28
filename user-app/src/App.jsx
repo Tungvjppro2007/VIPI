@@ -54,6 +54,23 @@ function AppContent() {
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
   const [orderSuccess, setOrderSuccess] = useState(null); // stores order ID when successful
   const [isMockMode, setIsMockMode] = useState(false);
+  const [addedProductId, setAddedProductId] = useState(null);
+  const [toast, setToast] = useState(null);
+
+  const handleAddToCart = (product) => {
+    addToCart(product);
+    setAddedProductId(product.id);
+    
+    setTimeout(() => setAddedProductId(null), 1000);
+
+    setToast(`Đã thêm "${product.name}" vào giỏ hàng!`);
+    
+    if (window.toastTimeout) clearTimeout(window.toastTimeout);
+    window.toastTimeout = setTimeout(() => {
+      setToast(null);
+    }, 3000);
+  };
+
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', 'dark');
   }, []);
@@ -210,7 +227,11 @@ function AppContent() {
         <div className="header-actions">
           <button className="cart-toggle" onClick={() => setIsCartOpen(true)}>
             🛒 Giỏ hàng
-            {getCartCount() > 0 && <span className="cart-count">{getCartCount()}</span>}
+            {getCartCount() > 0 && (
+              <span key={getCartCount()} className="cart-count pop-animation">
+                {getCartCount()}
+              </span>
+            )}
           </button>
         </div>
       </header>
@@ -264,11 +285,12 @@ function AppContent() {
                     <div className="product-footer">
                       <span className="product-price">{formatVND(product.price)}</span>
                       <button 
-                        className="btn" 
+                        className={`btn ${addedProductId === product.id ? 'btn-added' : ''}`} 
                         disabled={isOutOfStock}
-                        onClick={() => addToCart(product)}
+                        onClick={() => handleAddToCart(product)}
+                        style={addedProductId === product.id ? { background: '#22c55e', color: 'white' } : {}}
                       >
-                        {isOutOfStock ? 'Hết hàng' : 'Mua ngay'}
+                        {isOutOfStock ? 'Hết hàng' : addedProductId === product.id ? '✓ Đã thêm' : 'Mua ngay'}
                       </button>
                     </div>
                   </div>
@@ -452,6 +474,14 @@ function AppContent() {
           </div>
         </div>
       </div>
+
+      {/* Toast Notification */}
+      {toast && (
+        <div className="toast-notification">
+          <span>{toast}</span>
+          <button className="toast-close" onClick={() => setToast(null)}>×</button>
+        </div>
+      )}
 
       {/* Footer */}
       <footer className="footer">
