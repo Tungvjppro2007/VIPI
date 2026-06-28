@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+
+  /* Color Palette - Cyber Garden (Green, Mint, Cyan, White) */
+  --accent-green: #49C121;
+  --accent-lime: #9EE63E;
+  --accent-olive: #B8D361;
+  --accent-mint: #79E6B7;
+  --accent-cyan: #A6F1F6;
+  
+  --accent-blue: var(--accent-mint);
+  --accent-purple: var(--accent-lime);
+  --accent-emerald: var(--accent-green);
+  --accent-rose: #f43f5e;
+  --accent-amber: var(--accent-olive);
+
+  --gradient-primary: linear-gradient(135deg, #49C121 0%, #79E6B7 100%);
+
+  /* Default Dark Theme Variables */
+  --bg-main: #060a07;
+  --bg-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.5) 100%);
+  --bg-image: url('/background.jpeg');
+  --bg-sidebar: #0b0f0c;
+  --bg-card: rgba(14, 22, 16, 0.7);
+  --bg-card-hover: rgba(22, 36, 26, 0.85);
+  --border-color: rgba(0, 0, 0, 0.08);
+  --border-color-glow: rgba(73, 193, 33, 0.45);
+  
+  --text-primary: #111827;
+  --text-secondary: #374151;
+  --text-muted: #4b5563;
+  
+  --gradient-glow: linear-gradient(135deg, rgba(73, 193, 33, 0.15) 0%, rgba(121, 230, 183, 0.15) 100%);
+  
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-glow: 0 0 20px 2px rgba(73, 193, 33, 0.22);
+  
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 30px;
+  
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Element Backgrounds */
+  --bg-input: #0d1410;
+  --bg-input-focus: #14221a;
+  --bg-modal: #090e0a;
+  --bg-qty-hover: #1d3326;
+  --theme-toggle-bg: rgba(255, 255, 255, 0.05);
+}
+
+/* Light Theme Variables Override */
+[data-theme='light'] {
+  --bg-main: #f0f7f3;
+  --bg-gradient: linear-gradient(135deg, rgba(240, 247, 243, 0.85) 0%, rgba(235, 245, 240, 0.85) 50%, rgba(230, 246, 247, 0.85) 100%);
+  --bg-image: url('/background.jpeg');
+  --bg-sidebar: #e3efe7;
+  --bg-card: rgba(255, 255, 255, 0.75);
+  --bg-card-hover: rgba(255, 255, 255, 0.95);
+  --border-color: rgba(73, 193, 33, 0.18);
+  --border-color-glow: rgba(73, 193, 33, 0.6);
+  
+  --text-primary: #0a1f13;
+  --text-secondary: #2f5641;
+  --text-muted: #628271;
+  
+  --gradient-glow: linear-gradient(135deg, rgba(73, 193, 33, 0.06) 0%, rgba(121, 230, 183, 0.06) 100%);
+  
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.02);
+  --shadow-md: 0 4px 10px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+  --shadow-lg: 0 10px 25px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+  --shadow-glow: 0 0 20px 2px rgba(73, 193, 33, 0.12);
+  
+  --bg-input: #ffffff;
+  --bg-input-focus: #ebf5f0;
+  --bg-modal: #ffffff;
+  --bg-qty-hover: #d2ebd9;
+  --theme-toggle-bg: rgba(0, 0, 0, 0.05);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-image: var(--bg-gradient), var(--bg-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-sm);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Typography styles */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* Glowing utilities */
+.glow-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  transition: var(--transition-smooth);
+}
+
+.glow-card:hover {
+  border-color: var(--border-color-glow);
+  box-shadow: var(--shadow-glow);
+  background: var(--bg-card-hover);
+  transform: translateY(-2px);
+}
+
+.gradient-text {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
