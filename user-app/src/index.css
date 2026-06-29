@@ -21,7 +21,7 @@
   /* Default Dark Theme Variables */
   --bg-main: #060a07;
   --bg-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.5) 100%);
-  --bg-image: url('./assets/background-new.jpeg');
+  --bg-image: url('../../background-new.jpeg');
   --bg-sidebar: #0b0f0c;
   --bg-card: rgba(14, 22, 16, 0.7);
   --bg-card-hover: rgba(22, 36, 26, 0.85);
@@ -58,7 +58,7 @@
 [data-theme='light'] {
   --bg-main: #f0f7f3;
   --bg-gradient: linear-gradient(135deg, rgba(240, 247, 243, 0.85) 0%, rgba(235, 245, 240, 0.85) 50%, rgba(230, 246, 247, 0.85) 100%);
-  --bg-image: url('./assets/background-new.jpeg');
+  --bg-image: url('../../background-new.jpeg');
   --bg-sidebar: #e3efe7;
   --bg-card: rgba(255, 255, 255, 0.75);
   --bg-card-hover: rgba(255, 255, 255, 0.95);
