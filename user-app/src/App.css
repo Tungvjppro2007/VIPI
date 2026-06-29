@@ -617,12 +617,7 @@
   font-size: 0.9rem;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  body {
-    background-attachment: scroll !important;
-  }
-}
+
 
 @media (max-width: 640px) {
   .logo {

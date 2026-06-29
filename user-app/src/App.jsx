@@ -218,6 +218,7 @@ function AppContent() {
 
   return (
     <div className="app-container">
+      <div className="fixed-background"></div>
       {/* Header */}
       <header className="header">
         <a href="/" className="logo">
