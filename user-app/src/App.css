@@ -9,9 +9,9 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  background: #DDF47A;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  background: transparent;
+  box-shadow: none;
+  border-bottom: none;
   padding: 1.25rem 2rem;
   display: flex;
   justify-content: space-between;
