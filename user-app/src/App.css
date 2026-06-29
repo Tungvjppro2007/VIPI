@@ -620,7 +620,8 @@
 /* Responsive */
 @media (max-width: 768px) {
   body {
-    background-attachment: scroll;
+    background-image: var(--bg-gradient), url('/background-mobile.jpeg') !important;
+    background-attachment: scroll !important;
   }
 }
 
